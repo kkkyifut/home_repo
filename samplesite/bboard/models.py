@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Bb(models.Model):
@@ -9,12 +11,24 @@ class Bb(models.Model):
         verbose_name='Опубликовано')
     rubric = models.ForeignKey('Rubric', null=True, on_delete=models.PROTECT,
         verbose_name='Рубрика')
+        
+    class Kinds(models.IntegerChoices):
+        BUY = 1, 'Куплю'
+        SELL = 2, 'Продам'
+        EXCHANGE = 3, 'Обменяю'
+        RENT = 4
+        __empty__ = 'Выберите тип публикуемого объявления'
+
+    kind = models.SmallIntegerField(choices=Kinds.choices, default=Kinds.SELL)
 
     class Meta:
         verbose_name_plural = 'Объявления' # название модели во множ. числе
         verbose_name = 'объявление' # название в ед. числе
         ordering = ['-published']
 
+class AdvUser(models.Model):
+    is_activated = models.BooleanField(default=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Rubric(models.Model):
     name = models.CharField(max_length=20, db_index=True,
