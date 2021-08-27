@@ -2,6 +2,7 @@
 
 # Технологии
 Python 3.9.5 64-bit
+
 Django 2 / 3
 
 # Проекты
@@ -15,4 +16,5 @@ Django 2 / 3
 
 # Автор
 Юрий Яковлев
+
 [telegram](https://t.me/kyifut)
