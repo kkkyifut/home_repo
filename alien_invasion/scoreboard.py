@@ -2,8 +2,9 @@ import pygame.font
 from pygame.sprite import Group
 from ship import Ship
 
+
 class Scoreboard():
-    # Класс для вывода игровой информации
+    """Класс для вывода игровой информации"""
 
     def __init__(self, ai_game):
         # инициализирует атрибуты подсчёта очков
@@ -27,8 +28,8 @@ class Scoreboard():
         rounded_score = round(self.stats.score, -1)
         score_str = "{:,}".format(rounded_score)
         self.score_image = self.font.render(score_str, True,
-                self.text_color, self.settings.bg_color)
-                
+                                            self.text_color, self.settings.bg_color)
+
         # вывод счёта в правой верхней части экрана
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.screen_rect.right - 20
@@ -39,7 +40,7 @@ class Scoreboard():
         high_score = round(self.stats.high_score, -1)
         high_score_str = "{:,}".format(high_score)
         self.high_score_image = self.font.render(high_score_str, True,
-                self.text_color, self.settings.bg_color)
+                                                 self.text_color, self.settings.bg_color)
 
         # рекорд выравнивается по центру верхней стороны
         self.high_score_rect = self.high_score_image.get_rect()
@@ -63,7 +64,7 @@ class Scoreboard():
         # преобразует уровень в графическое изображение
         level_str = str(self.stats.level)
         self.level_image = self.font.render(level_str, True,
-                self.text_color, self.settings.bg_color)
+                                            self.text_color, self.settings.bg_color)
 
         # уровень выводится под текущим счётом
         self.level_rect = self.level_image.get_rect()

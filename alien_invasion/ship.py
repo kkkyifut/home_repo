@@ -1,8 +1,10 @@
 import pygame
 from pygame.sprite import Sprite
 
+
 class Ship(Sprite):
-    # Класс для управления кораблём
+    """Класс для управления кораблём"""
+
     def __init__(self, ai_game):
         # инициализирует корабль и задаёт его начальную позицию
         super().__init__()
@@ -11,9 +13,10 @@ class Ship(Sprite):
         self.screen_rect = ai_game.screen.get_rect()
 
         # загружает изображение корабля и получает прямоугольник
-        self.image = pygame.image.load(r'D:/study/alien_invasion/images/ship.bmp')
+        self.image = pygame.image.load(
+            r'D:/study/alien_invasion/images/ship.bmp')
         self.rect = self.image.get_rect()
-        
+
         # каждый новый корабль появляется у нижнего края
         self.rect.midbottom = self.screen_rect.midbottom
 
@@ -30,19 +33,24 @@ class Ship(Sprite):
     def update(self):
         # обновляет позицию корабля с учётом флага
         # обновляется атрибут x, не rect
-        self.image = pygame.image.load(r'D:/study/alien_invasion/images/ship.bmp')
+        self.image = pygame.image.load(
+            r'D:/study/alien_invasion/images/ship.bmp')
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
-            self.image = pygame.image.load(r'D:/study/alien_invasion/images/ship_right.bmp')
+            self.image = pygame.image.load(
+                r'D:/study/alien_invasion/images/ship_right.bmp')
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed
-            self.image = pygame.image.load(r'D:/study/alien_invasion/images/ship_left.bmp')
+            self.image = pygame.image.load(
+                r'D:/study/alien_invasion/images/ship_left.bmp')
         if self.moving_up and self.rect.top > 0:
             self.y -= self.settings.ship_speed
-            self.image = pygame.image.load(r'D:/study/alien_invasion/images/ship.bmp')
+            self.image = pygame.image.load(
+                r'D:/study/alien_invasion/images/ship.bmp')
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.y += self.settings.ship_speed
-            self.image = pygame.image.load(r'D:/study/alien_invasion/images/ship_down.bmp')
+            self.image = pygame.image.load(
+                r'D:/study/alien_invasion/images/ship_down.bmp')
         # обновление атрибута rect на основании self.x
         self.rect.x = self.x
         self.rect.y = self.y

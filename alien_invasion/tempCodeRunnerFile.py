@@ -1,1 +1,1 @@
-_check_play_button
+self.settings = Settings()
